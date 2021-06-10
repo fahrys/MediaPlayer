@@ -40,5 +40,40 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp" />
     </LinearLayout>
+    
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_baseline_play_arrow_24"
+        android:layout_marginTop="40dp"
+        android:onClick="playBtnClick"
+        android:id="@+id/btn_playpause"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_baseline_volume_down_24"/>
+        
+        <SeekBar
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/suaraseekbar"
+            android:progress="50"
+            android:max="100"/>
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_baseline_volume_up_24"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>
