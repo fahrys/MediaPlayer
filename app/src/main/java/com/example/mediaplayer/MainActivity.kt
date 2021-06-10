@@ -1,8 +1,11 @@
 package com.example.mediaplayer
 
+import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.view.View
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -65,8 +68,35 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
+        Thread(Runnable {
+            while (mediaputar != null) {
+                try {
+                    val pesan = Message()
+                    pesan.what = mediaputar.currentPosition
+                    penanganan.sendMessage(pesan)
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                }
+            }
+        }).start()
 
+    }
 
+    private var penanganan = @SuppressLint("HandlerLeak")
+    object : Handler() {
+        @SuppressLint("SetTextI18n")
+        override fun handleMessage(pesan: Message) {
+            super.handleMessage(pesan)
+
+            val posisiSaatIni = pesan.what
+            sikbarlagu.progress = posisiSaatIni
+
+            val perkiraannWaktu = buatLabelWaktu(posisiSaatIni)
+            labelperkiraanwaktu.text = perkiraannWaktu
+
+            val pengingatWaktu = buatLabelWaktu(waktutotal - posisiSaatIni)
+            labelpengingatwaktu.text = "-$pengingatWaktu"
+        }
     }
 
     fun playBtnClick(view: View) {}
