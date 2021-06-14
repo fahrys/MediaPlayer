@@ -99,5 +99,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun playBtnClick(view: View) {}
+    fun buatLabelWaktu(waktu : Int) : String {
+        var labelwaktu = ""
+        val menit = waktu / 1000 / 60
+        val detik = waktu / 1000 % 60
+
+        labelwaktu = "$menit: "
+        if (detik < 10) labelwaktu += "0"
+        labelwaktu += detik
+
+        return labelwaktu
+    }
+
+    fun playBtnClick(v: View) {
+        if (mediaputar.isPlaying){
+            mediaputar.pause()
+            btn_playpause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24)
+        } else {
+            mediaputar.start()
+            btn_playpause.setBackgroundResource(R.drawable.ic_baseline_pause_circle_filled_24)
+        }
+    }
 }
