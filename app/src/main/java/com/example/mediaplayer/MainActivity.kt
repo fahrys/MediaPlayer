@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mediaputar = MediaPlayer.create(this , R.raw.kemoono)
+        mediaputar = MediaPlayer.create(this , R.raw.kitan)
         mediaputar.isLooping = true
         mediaputar.setVolume(0.5f ,0.5f)
         waktutotal = mediaputar.duration
